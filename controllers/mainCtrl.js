@@ -57,37 +57,43 @@ module.exports = {
         res.json(famArr);
     },
     getRestaurants: function(req, res, next) {
-        res.json({Restaurants: user.restaurants})
-      },
-        var restaurantsResponse = {
-            "restaurants": user.restaurants
-        };
-        // var rating = req.query.rating || 1;
-        var restaurantArr = user.restaurants.filter(function(value) {
-            if (parseInt(value.rating) >= parseInt(req.query.rating)) {
-                return value;
-            }
-        })
-        var restaurantsByRatingResponse = {
-            "restaurants": restaurantArr
-        };
-        res.send(restaurantsByRatingResponse);
-    },
-    getRestName: function(req, res, next) {
-        var restArr = user.restaurants.filter(value => {
-            if (value.name === req.params.name) {
-                return value;
-            }
-        })
-        res.json(restArr);
-    }
-    getRating: (req, res, next) => {
-      var rating = user.restaurants.filter(value => {
 
+        res.json({
+            Restaurants: user.restaurants
+        })
+    },
+
+
+  getRestName: function(req, res, next) {
+      var restArr = user.restaurants.filter(function(value) {
+          if (value.name === req.params.name) {
+              return value;
+          }
       })
-    }
+      res.json(restArr);
+  },
+  getRating: (req, res, next) => {
+    var restaurantsResponse = {
+            "restaurants": user.restaurants
+        }
+
+        // var rating = req.query.rating || 1;
+    //     var restaurantArr = user.restaurants.filter(function(value) {
+    //         if (parseInt(value.rating) >= parseInt(req.query.rating)) {
+    //             return value;
+    //         }
+    //     })
+    // var restaurantsByRatingResponse = {
+    //     "restaurants": restaurantArr
+    // }
+    res.send(restaurantsByRatingResponse);
+    // var rating = user.restaurants.filter(value => {
+    //
+    // })
+  }
+}
 
 // if(req.query.order === 'asc'){
 //   res.json(user.occupations.sort())
 // }
-}
+// }
